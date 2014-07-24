@@ -21,7 +21,7 @@ git checkout gh-pages
 git add .
 git commit -m "Initial commit"
 git remote add origin git@github.com:username/blog.git
-git push -u --force origin master
+git push -u --force origin gh-pages
 ```
 
 # Install Dependencies
@@ -62,7 +62,7 @@ title: This is my new post
 tags: python, linux
 ---
 
-I [cloned this blog](https://github.com/chase-seibert/blog)
+I [cloned this blog](https://github.com/pcockwell/blog)
 ```
 
 While you're editing, you can view your [changes live](http://localhost:4000/blog/index.html). When you're done, just push as normal.

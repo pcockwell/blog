@@ -1,5 +1,5 @@
 auto: true
 pygments: true
 baseurl: /blog
-default_page_title: Chase Seibert | blog
+default_page_title: Patrick Cockwell | The San Francisco Life
 markdown: kramdown

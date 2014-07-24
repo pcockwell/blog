@@ -145,7 +145,7 @@ def write_comments_api(posts):
         thread_id = None
         title = post.get("title")
         date_added = post.get("date")
-        url = "http://chase-seibert.github.com/blog/%s/%02d/%02d/%s.html" % (
+        url = "http://pcockwell.github.com/blog/%s/%02d/%02d/%s.html" % (
                 date_added.year,
                 date_added.month,
                 date_added.day,
@@ -156,7 +156,7 @@ def write_comments_api(posts):
             thread = disqus.threads.create(
                 access_token=access_token,
                 method="POST",
-                forum="chaseseibertblog",
+                forum="patrickcockwellblog",
                 title=title,
                 url=url)
             print "Created thread: " + thread.get("id")
@@ -165,7 +165,7 @@ def write_comments_api(posts):
             # already exists
             thread = disqus.threads.list(
                 access_token=access_token,
-                forum="chaseseibertblog",
+                forum="patrickcockwellblog",
                 thread="link:%s" % url,
                 )[0]
             print "Thread already exists: " + thread.get("id")
@@ -228,7 +228,7 @@ def redirect_blogger(posts):
             post = get_post_by_title(posts, title)
             
             date_added = post.get("date")
-            url = "http://chase-seibert.github.com/blog/%s/%02d/%02d/%s.html" % (
+            url = "http://pcockwell.github.com/blog/%s/%02d/%02d/%s.html" % (
                     date_added.year,
                     date_added.month,
                     date_added.day,
