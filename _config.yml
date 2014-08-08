@@ -1,5 +1,5 @@
 auto: true
 pygments: true
 baseurl: /blog
-default_page_title: Patrick Cockwell | The San Francisco Life
+default_page_title: Patrick Cockwell | Coding, Travelling and Thrill Seeking
 markdown: kramdown
