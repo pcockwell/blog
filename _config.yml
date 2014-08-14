@@ -1,5 +1,5 @@
 auto: true
 pygments: true
 baseurl: /blog
-default_page_title: Patrick Cockwell | Coding, Travelling and Thrill Seeking
+default_page_title: 'Patrick Cockwell | Coding, Travelling and Thrill Seeking'
 markdown: kramdown

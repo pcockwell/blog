@@ -156,7 +156,7 @@ def write_comments_api(posts):
             thread = disqus.threads.create(
                 access_token=access_token,
                 method="POST",
-                forum="patrickcockwellblog",
+                forum="pcockwellblog",
                 title=title,
                 url=url)
             print "Created thread: " + thread.get("id")
@@ -165,7 +165,7 @@ def write_comments_api(posts):
             # already exists
             thread = disqus.threads.list(
                 access_token=access_token,
-                forum="patrickcockwellblog",
+                forum="pcockwellblog",
                 thread="link:%s" % url,
                 )[0]
             print "Thread already exists: " + thread.get("id")
