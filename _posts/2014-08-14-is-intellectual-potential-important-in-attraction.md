@@ -12,4 +12,4 @@ Now I've been using the term 'intellectual potential' a decent amount so far. Le
 
 So to respond to Jenna's situation, I would say that it is indeed shallow to think like that. But I would qualify that by saying that I would be disappointed if she wasn't shallow about it. Jenna is a smart girl, and I'd hope she doesn't settle on any of the criteria she has for finding the right someone. Relationships, and dating in general, aren't easy. I think everyone knows that. Compromising on the key things you look for in a significant other might make a relationship happen faster, but it won't make it easier. 
 
-Finally, to answer the question posed in the title of this post, yes intellectual attraction is a very important part of being attracted to someone. And so is just about every other shallow requirement you might place on a partner.
+Finally, to answer the question posed in the title of this post, yes intellectual attraction is a very important part of being attracted to someone. And so is just about every other shallow requirement you might place on a potential partner.
