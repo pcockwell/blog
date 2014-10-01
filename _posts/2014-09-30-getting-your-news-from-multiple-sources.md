@@ -6,7 +6,7 @@ tags: news, america, information
 
 Are you informed on what's going on in your city? What about province/state? How about your country? Do you know what's going on with big name issues around the world?
 
-If you can't answer 'Somewhat' (or 'Yes') to all of those, you need to start getting more as to your surroundings. They matter. They matter a lot.
+If you can't answer 'Somewhat' (or 'Yes') to all of those, you need to start getting more informed of your surroundings. They matter. They matter a lot.
 
 Now, for those of you who at least have an idea of what's going on at every one of those levels, how do you know that the information you have is accurate? Common answers might be 'Well, I watch the news.', or 'I read blog posts/journals/newspapers.', or even 'I listen to the radio'. Ok, good for you. But that doesn't mean that what you learned from those sources are correct. Here is an excerpt from an article on globalissues.org entitled [Media in the United States](http://www.globalissues.org/article/163/media-in-the-united-states):
 
