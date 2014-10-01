@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting Your News From Multiple Sources
+title: Getting Your News from Multiple Sources
 tags: news, america, information
 ---
 
