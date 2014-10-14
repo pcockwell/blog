@@ -21,7 +21,9 @@ a, a:visited, a:hover {
 
 .sub-title {
     padding-left: 0px;
-    margin-left: 0px;
+    padding-bottom: 0px;
+    margin: 0px;
+    background-color: transparent;
     font-style: italic;
     border-left: inherit;
 }
