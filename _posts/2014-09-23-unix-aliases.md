@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Bash Alias, Export and Functions 
 tags: unix, alias, efficiency
 ---

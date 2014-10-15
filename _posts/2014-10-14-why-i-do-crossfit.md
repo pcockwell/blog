@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Why I Do CrossFit
 tags: fitness, crossfit, strength, health
 ---

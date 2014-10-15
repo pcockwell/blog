@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Travelling in a New Country
 tags: travel, europe
 ---

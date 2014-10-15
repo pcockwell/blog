@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Why You Should Do as Many Internships as Possible
 tags: School, Work, Education, Internship, Coop
 ---

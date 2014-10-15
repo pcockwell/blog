@@ -1,5 +1,4 @@
 ---
-layout: post
 title: An Ultimate Thrill Seeking Activity
 tags: thrill, skydiving, hobby
 ---

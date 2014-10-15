@@ -1,5 +1,17 @@
-auto: true
-pygments: true
+highlighter: pygments
 baseurl: /blog
 default_page_title: 'Patrick Cockwell | Coding, Travelling and Thrill Seeking'
 markdown: redcarpet
+defaults:
+  -
+    scope:
+      path: ""
+      type: "post"
+    values:
+      layout: "post"
+  -
+    scope:
+      path: ""
+      type: "page"
+    values:
+      layout: "page"

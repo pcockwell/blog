@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Is Intellectual Potential Important in Attraction?
 tags: attraction, intelligence
 ---
