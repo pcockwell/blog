@@ -4,7 +4,7 @@ title: Multilingualism
 tags: language
 ---
 
-I can speak 2 languages well enough to get by in every day situations in those languages. I've been (semi) actively trying to learn a new language (German) over this past summer. It's difficult to find a tool that is easily affordable, quality product that will keep me entertained long enough to properly learn the language.
+I can speak 2 languages well enough to get by in every day situations in those languages. I've been (semi) actively trying to learn a new language (German) over this past summer. It's difficult to find a tool that is an easily affordable, quality product that will keep me entertained long enough to properly learn a new language.
 
 First I'll give you a little bit of background information. I grew up in Ottawa, Ontario, Canada. Ontario is a predominantly english speaking province, but the location where this varies is once you start getting close to the Quebec border. Ottawa is located right on the Ottawa river (or if you are from Quebec, the Outaouais river), and actually has a noticeable amount of french. The other thing that helps with this is that the Canadian federal government has many branches located in Ottawa (including Parliament), and, as per the [Official Languages Act](http://lois-laws.justice.gc.ca/eng/acts/O-3.01/page-1.html),
 
