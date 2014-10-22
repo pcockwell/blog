@@ -31,7 +31,7 @@
         <meta property="og:url" content="http://pcockwell.github.com{{ site.baseurl }}{{ page.url }}"/>
         <meta property="og:site_name" content="{{ site.default_page_title }}"/>
         <meta property="fb:admins" content="692280244"/>
-        <meta property="og:description" content="My big city experiences and tips as a Software Developer in San Francisco" />
+        <meta property="og:description" content="My thoughts and experiences as a young adult in San Francisco" />
 
     </head>
     <body>
@@ -55,7 +55,7 @@
                 <div class="span3">
 
                     <h2 class="title"><a href="{{ site.baseurl }}/">{{ site.default_page_title }}</a></h2>
-                    <blockquote class="sub-title">My big city experiences and tips as a Software Developer in San Francisco</blockquote>
+                    <blockquote class="sub-title">My thoughts and experiences as a young adult in San Francisco</blockquote>
 
                     <div class="countries">
                         <h4><a href="{{ site.baseurl }}/visited_countries/">Countries I've Visited</a></h4>
@@ -63,13 +63,19 @@
 
                     <a href="https://stackexchange.com/users/332734/paradox870" class="stackoverflow"><img src="http://stackexchange.com/users/flair/332734.png" width="208" height="58" alt="profile for Patrick Cockwell on Stack Exchange, a network of free, community-driven Q&amp;A sites" title="profile for Patrick Cockwell on Stack Exchange, a network of free, community-driven Q&amp;A sites" /></a>
 
-                    {% if page.title != site.default_page_title and site.posts %}
+                    {% if page.title != site.default_page_title %}
                         <div id="related">
                             <h4>Recent Posts</h4>
                             <ul class="posts">
-                                {% for post in site.posts limit:5 %}
-                                    <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-                                {% endfor %}
+                                {% if site.related_posts %}
+                                    {% for post in site.related_posts limit:5 %}
+                                        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+                                    {% endfor %}
+                                {% elsif site.posts %}
+                                    {% for post in site.posts limit:5 %}
+                                        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+                                    {% endfor %}
+                                {% endif %}
                             </ul>
                         </div>
                     {% endif %}
