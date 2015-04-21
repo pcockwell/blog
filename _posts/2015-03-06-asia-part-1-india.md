@@ -1,5 +1,5 @@
 ---
-title: Asia Part 1: India
+title: Asia Part 1 - India
 tags: india, adventure, explore, fun, travel
 ---
 
