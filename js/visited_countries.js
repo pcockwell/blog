@@ -38,7 +38,10 @@ AmCharts.ready(function() {
 { id: 'HT', showAsSelected: true },
 { id: 'PR', showAsSelected: true },
 { id: 'US', showAsSelected: true },
-{ id: 'HK', showAsSelected: true }
+{ id: 'HK', showAsSelected: true },
+{ id: 'IN', showAsSelected: true },
+{ id: 'NP', showAsSelected: true },
+{ id: 'TH', showAsSelected: true },
         ]
     };
 
