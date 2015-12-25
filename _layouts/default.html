@@ -68,12 +68,22 @@
                             <h4>Recent Posts</h4>
                             <ul class="posts">
                                 {% if site.related_posts %}
-                                    {% for post in site.related_posts limit:5 %}
-                                        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+                                    {% for post in site.related_posts %}
+                                        {% if post.hidden != true %}
+                                            {% capture count %}{{ count | plus: '1' }}{% endcapture %}
+                                            {% if count == '1' or count == '2' or count == '3' or count == '4' or count == '5' %}
+                                                <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+                                            {% endif %}
+                                        {% endif %}
                                     {% endfor %}
                                 {% elsif site.posts %}
-                                    {% for post in site.posts limit:5 %}
-                                        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+                                    {% for post in site.posts %}
+                                        {% if post.hidden != true %}
+                                            {% capture count %}{{ count | plus: '1' }}{% endcapture %}
+                                            {% if count == '1' or count == '2' or count == '3' or count == '4' or count == '5' %}
+                                                <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+                                            {% endif %}
+                                        {% endif %}
                                     {% endfor %}
                                 {% endif %}
                             </ul>
