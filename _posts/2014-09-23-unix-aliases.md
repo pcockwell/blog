@@ -13,31 +13,31 @@ First, up is the `alias` command
 
 This is a fairly good description of what it does. Essentially, it provides shortcuts so that you can navigate your system and do common tasks with increased efficiency. In general you want to be using them to reduce the number of characters you have to type to execute a command that you use often. A very common example of this is using an alias to set command options with `ls`. Most people people prefer to use the long listing format and to show even hidden files, which requires adding `-la` as command options. That's an increase of 200% in the amount of typing (2 characters to 6 characters) if you also include the required space. By using aliases, we can shorten that so that by simply typing `ls` we will always get the long listing format and display hidden files:
 
-```sh
+~~~sh
 alias ls='ls -la'
-```
+~~~
 
 Second is the `export` command
 
 The `export` command is used to persist Bash variables accross sessions. Using it in combination with your Bash profile (usually `.bash_profile` or `.bashrc`) can save these variables for future use. In general, I would recommend using `alias` for common commands since it doesn't really help to have a command saved in a variable. Personally, I use it to save the location of some common folders I use. Then I combine it with `alias` so that I have quick shortcuts to those locations. For example, you could do the following:
 
-```sh
+~~~sh
 export HOME=/Users/pcockwell
 export PROJ=$HOME/projects
 export BLOG=$PROJ/blog
 
 alias proj="cd $PROJ"
 alias blog="cd $BLOG"
-```
+~~~
 
 Combining both together allows me to base several aliased commands (or variables) off of the same base variable and if I ever need to change something, I only need to do it in one location instead of multiple.
 
 The other thing that export is sometimes used for is terminal settings. For example, I prefer to have colors when I use the `ls` command, and I've modified my `PS1` (terminal prompt). To do that, I've set the following export commands in my Bash profile:
 
-```sh
+~~~sh
 export PS1='[\[\e[1;31m\]\w\[\e[1;36m\]$(parse_git_branch)\[\e[0m\]]$ '
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-```
+~~~
 
 Let's break down that `PS1` export. 
 
@@ -58,11 +58,11 @@ But wait a second... What about that `parse_git_branch` command? Where did that 
 
 Bash functions are commands you can create that can do as many different things as you want them to (assuming you know how to do those things in bash to begin with). Essentially, think of them as functions in the sense of any other programming language, except that the functionality for these is based on normal Bash commands (or `aliases` and `exports`) and there aren't any named variables that you can pass in (though positional arguments do exist). Let's take a look at that `parse_git_branch` function from above.
 
-```sh
+~~~sh
 parse_git_branch() {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\ →\ \1/'
 }
-```
+~~~
 
 * `parse_git_branch()` - Function name declaration (just like in any other language)
 * `{` - This indicates the start of the actual code for the function
@@ -73,7 +73,7 @@ parse_git_branch() {
 
 In this case, the Bash function is all on one line, but this doesn't have to be the case. I use git quite a bit, and I (and my company) have many repositories. This leads to lots of repository cloning. Here's a function I wrote so that I can easily clone a repository knowing only its name.
 
-```sh
+~~~sh
 clone(){
     if [ -n "$1" ]; then
         proj
@@ -81,7 +81,7 @@ clone(){
         cd -
     fi
 }
-```
+~~~
 
 This function first checks to see that a positional parameter was used and that the length of it is non-zero. It then executes an alias I have set up (shown above) to move to my projects directory, where it executes a `git clone` command knowing to clone from my personal Github account and substitutes the parameter passed in as the name of the repository. Lastly, it brings me back to wherever I was before I executed the command (using `cd -`) so I can continue with what I was doing.
 

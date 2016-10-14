@@ -1,7 +1,11 @@
-highlighter: pygments
+highlighter: rouge
 baseurl: /blog
 default_page_title: 'Patrick Cockwell | An Uncommon Approach To Life'
-markdown: redcarpet
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
 defaults:
   -
     scope:
