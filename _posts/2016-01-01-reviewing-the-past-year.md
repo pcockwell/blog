@@ -119,7 +119,7 @@ that remains to be seen though.
 Thanks for reading! The last thing I learned about doing this for the first
 time this year is that I much prefer setting goals instead of choosing a New
 Years resolution. Goals feel like I'm improving and working towards something
-better, whereas a resolution very often feels like I'm trying to main some
+better, whereas a resolution very often feels like I'm trying to maintain some
 status quo or that I'm depriving myself of something that I generally enjoy
 doing. What are your goals/resolutions for 2016? Do you have any big plans to
 go along with it? I would love to hear from you in the comments.
