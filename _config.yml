@@ -2,6 +2,7 @@ highlighter: rouge
 baseurl: /blog
 default_page_title: 'Patrick Cockwell | An Uncommon Approach To Life'
 markdown: kramdown
+lsi: true
 kramdown:
   input: GFM
   auto_ids: true

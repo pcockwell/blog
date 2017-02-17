@@ -3,3 +3,5 @@ ruby '2.2.4'
 
 gem 'jekyll'
 gem 'rouge'
+gem 'classifier-reborn'
+gem 'gsl'
