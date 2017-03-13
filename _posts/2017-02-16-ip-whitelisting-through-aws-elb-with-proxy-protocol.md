@@ -19,12 +19,12 @@ gateway into our infrastructure from the outside.
 The old setup for these machines, while strong, was not highly available. The
 setup used NGINX and the `Hosts Access` files that most systems use to manage
 SSH connections. In order to allow dynamic access from new IPs, we set up an
-SSH based two factor authentication mechanism via
+SSH-based two factor authentication mechanism via
 [Authy](https://github.com/authy/authy-ssh) that updates a `hosts.allow` file
 stored in S3. Our bastion hosts then use cron jobs to pull down new versions of
 this file, thus allowing an IP authorized via Authy to connect to our
 infrastructure. The system also goes through and removes IPs added in this way
-after a 24 hour period. We have certain services that are supported by or run
+after a fixed period. We have certain services that are supported by or run
 directly on these boxes as well. Initially, they simply pointed to one of the
 two instances we had in service, but this was statically configured.
 
@@ -146,7 +146,7 @@ the tightest security.
 
 A `Config` object is created with the names of both of these files, which in
 turn creates a `HostsFile` object for each of these. The `HostsFile` class
-parses the contents of the file as per the specifications, and uses the `Radix`
+parses the contents of the file per the specifications, and uses the `Radix`
 library to generate a data structure that represents the IP space covered by
 that file. It also stores the OS value for the time that file was last modified
 so that it can provide a mechanism to refresh the data structure if it has been
@@ -199,7 +199,7 @@ support for
 > single-threaded concurrent code using coroutines, multiplexing I/O access
 > over sockets and other resources, [and] running network clients and servers
 
-Given the nature of this project, it made sense to leverage the built in
+Given the nature of this project, it made sense to leverage the built-in
 support from `asyncio` for server protocols to handle the I/O portions of
 authorizing and forwarding request data.
 
@@ -257,7 +257,7 @@ to be handled on an individual basis.
 In order to have the server run and continually accept incoming connections, we
 then issue the command `loop.run_forever()` which tells the event loop to
 continue executing necessary functions of the server until the program is
-manually terminated or it runs into an error, at which point it is to
+manually terminated or it runs into an error, at which point it would
 gracefully shut down the server.
 
 #### Putting it in operation
@@ -283,8 +283,8 @@ The contents of this file simply indicate that the service is not to be started
 until after the `network.target` service (which handles socket connections) has
 finished setting up and is running, as well as the command to be used to start
 the service. In this case, we are indicating which `syslog` facility we want
-the logs for this service to be sent to, as well as the inbound address and
-port (`*:10022`) for incoming connections, and where to forward authorized
+the logs for this service to be sent to, the inbound address and port
+(`*:10022`) for incoming connections, and where to forward authorized
 connections to (`locahost:22`).
 
 Thanks for reading, and hopefully you've learned a little bit about how to
