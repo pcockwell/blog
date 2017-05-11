@@ -4,11 +4,6 @@ tags: proxy protocol, elb, ip whitelist
 hidden: true
 ---
 
-This is a post I wrote up for work on a cool project I recently worked on, and
-I figured I'd also post it here.
-
-----
-
 A recent push has been made at Agari to improve the availability of our
 infrastructure and ensure its fault tolerance. Doing this with AWS is not a
 particularly complicated task, and provides long term peace of mind as to
@@ -24,9 +19,7 @@ SSH-based two-factor authentication mechanism via
 file stored in S3. Our bastion hosts then use cron jobs to pull down new
 versions of this file, thus allowing an IP authorized via Authy to connect to
 our infrastructure. The system also goes through and removes IPs added in this
-way after a fixed period. We have certain services that are supported by or run
-directly on these boxes as well. Initially, they simply pointed to one of the
-two instances we had in service, but this was statically configured.
+way after a fixed period.
 
 The simplest way to make this system highly available in the case of an
 individual instance outage or, in the worst case, a full availability zone
@@ -36,10 +29,8 @@ services running on these instances to be agnostic of specifically which of the
 instances they were running on.
 
 Setting up and configuring the ELB in front of these instances was quite simple
-using [Terraform](https://www.terraform.io/) and AWS. The code below (which has
-been partially anonymized) is what we used to set things up via Terraform. It
-is important to note that the internal name we've given to our bastion hosts is
-`gate`.
+using [Terraform](https://www.terraform.io/) and AWS. The anonymized code below
+is what we used to set things up via Terraform.
 
 ~~~
 resource "aws_elb" "gate" {
@@ -106,17 +97,15 @@ which forwards through connection information to the underlying web server, and
 then configuring NGINX to use the `ngx_stream_proxy_module` to accept and parse
 requests coming in via the Proxy Protocol. Unfortunately, the functionality
 required to do this is unavailable in NGINX until version `1.11.4`, which is
-not supported by current Ubuntu offerings.
+unsupported by current Ubuntu offerings.
 
 As an alternative, we looked into creating our own simple TCP proxy service
 to authorize and pass on requests to the `gate` bastion hosts. We began with
-the code for a simple Python TCP proxy called `asyncioproxy` (which you can
-view the code for [here](https://github.com/aaronriekenberg/asyncioproxy)) and
-built upon that.
-
-The final result was a `tcp-authz-proxy` Python program (view
-[here](https://github.com/agaridata/tcp-authz-proxy)) that runs as a service on
-our `gate` bastion hosts. The key components of this program are:
+the code for a simple Python TCP proxy called 
+[`asyncioproxy`](https://github.com/aaronriekenberg/asyncioproxy) and built
+upon that. The final result was
+[`tcp-authz-proxy`](https://github.com/agaridata/tcp-authz-proxy) which runs as
+a service on our `gate` bastion hosts.
 
 #### The `Hosts Access` file parsing and authentication
 
@@ -133,26 +122,26 @@ goes through up to three levels of checks before access is granted or denied:
 3. Grant access to all IPs unmatched in either of the previous steps
 
 It is important to note that there are ways to specify IP ranges or have a
-blanket accept or deny rule in either of these files. Our setup for this (even
-prior to the `tcp-authz-proxy`) is an explicit whitelist in the `hosts.allow`
-file and a blanket `ALL: ALL` directive in the `hosts.deny` file to
-subsequently deny any IP not explicitly allowed. This is what we recommend for
+blanket accept or deny rule in either of these files. Our setup for this is an
+explicit whitelist in the `hosts.allow` file and a blanket `ALL: ALL` directive
+in the `hosts.deny` file to subsequently deny any IP not explicitly allowed.
+This is what we recommend for
 the tightest security.
 
 A `Config` object is created with the names of both of these files, which in
 turn creates a `HostsFile` object for each of these. The `HostsFile` class
 parses the contents of the file per the specifications, and uses the `Radix`
 library to generate a data structure that represents the IP space covered by
-that file. The `Config` object uses the Python `asyncio` library to schedule an
-attempted refresh of these files on a regular interval to pick up any changes.
-This is facilitated by storing the OS value indicating the time the file was last
-modified in order to determine if any change have occured since the initial load.
+that file. It also stores the OS value for the time that file was last modified
+so that it can provide a smart refresh mechanism since we modify those files
+regularly to add and remove IP addresses being authorized via `authy-ssh`. The
+`Config` object uses the Python `asyncio` library to schedule an attempted
+refresh of these files on a regular interval to pick up those changes.
 
-The `Config` class also exposes a method to check whether an IP is allowed by
-codifying the IP authentication process above. I've included the code for the
-`Config` class as a reference point, where the
-`HOSTS_FILE_REFRESH_INTERVAL_SECONDS` constant is set earlier in the file for
-easy adjustment.
+Finally, the `Config` object also exposes a method to check if an IP is allowed
+by codifying the IP authentication process above. I've included the code for
+the config class below, minus the complicated portion that parses IP addresses
+and adds them to the internal data store.
 
 ~~~python
 class Config(object):
@@ -201,12 +190,8 @@ will try to identify and parse the pattern for the Proxy Protocol. After doing
 so, it compares the requesting IP from the header to the allowed IP list
 specified by the `Config` object passed in, and if authorized, it will
 subsequently open a connection to the internal endpoint that would otherwise
-serve SSH requests. Again, this connection is opened via `asyncio` to manage
-the connection and allow multiple concurrent sessions by different users to be
-active at the same time. Conceptually, it is important to note that each
-individual connection will create a new instance of the `TCPAuthzProxyProtocol`
-class to handle communication being sent between that specific user and the
-server or internal network.
+serve SSH requests. This connection is opened and managed via `asyncio` to
+allowing multiple concurrent sessions.
 
 The code included below is the setup code for the server that implements the
 usage of the `TCPAuthzProxyProtocol` class:
@@ -220,7 +205,7 @@ server_coro = loop.create_server(
     lambda: tcp_authz_proxy.protocol.TCPAuthzProxyProtocol(config, remote_socket_host, remote_socket_port, loop),
     listen_socket_host, listen_socket_port
 )
-server = loop.run_until_complete(server_coro)
+server = loop.run_until_complete(server_coro) 
 logger.notice('Accepting TCP proxy requests on {0}:{1} ...'.format(*server.sockets[0].getsockname()))
 
 try:
@@ -251,11 +236,11 @@ gracefully shut down the server.
 
 #### Putting it in operation
 
-Using Ubuntu 16.04, and the new `systemd` setup for services, we can have a
-tool like Ansible ensure that the required `.service` file (included below)
-is copied to the necessary location and then subsequently added as an
-operating daemon on the `gate` instances that are servicing requests from the
-ELB.
+As we were working on this project, we decided it would be a good opportunity
+to upgrade to Ubuntu 16.04 which uses the new `systemd` setup for services. We
+use Ansible to ensure that the required `.service` file (included below) is
+copied to the necessary location and then subsequently added as an operating
+daemon on the instances that are servicing requests from the ELB.
 
 ~~~
 [Unit]
