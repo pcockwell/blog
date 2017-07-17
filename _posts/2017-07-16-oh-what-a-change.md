@@ -1,7 +1,6 @@
 ---
 title: Oh What A Change!
 tags: change, happiness, support, love, comfort
-hidden: true
 ---
 
 Have you ever thought things were going well for you, only to find out how much
@@ -34,6 +33,15 @@ That simple message conveyed several things to me:
 flaky person
 * That when she does have to cancel plans, she will actually reschedule
 
+After a delicious and entertaining brunch the next day, was followed by heading
+up for a long weekend of fun in the sun with some friends. I didn't want that
+weekend to come to a close, even after returning from a very busy few days, so
+I decided to text her to see if we could setup something impromptu as a way for
+me to wind down. To my surprise, she agreed to spending a few hours getting
+some Koja Kitchen. It was the perfect ending to an absolutely amazing weekend.
+
+---
+
 One thing that's become apparent to me as a result of past experiences is that
 I don't notice hints and am not really able to read between the lines. I don't
 do well with subtle forms of communication at all - in order for me to be able
@@ -65,6 +73,6 @@ with her.
 I've begun learning that just when I think things are going well in my life,
 she has an innate ability to make them so much better.
 
-Thank you so much Fatima
+Thank you so much!
 
 fa tɔʙa tɔme
